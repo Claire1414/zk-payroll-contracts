@@ -235,6 +235,29 @@ const MAX_DRAFT_DESCRIPTION_BYTES: u32 = 256;
 #[contract]
 pub struct Payroll;
 
+/// Pay-group effective-date validation (#783).
+pub mod pay_group_effective_date;
+mod validation_entrypoints;
+pub use pay_group_effective_date::{PayGroupDateError, PayGroupEffectivePeriod, PayGroupValidation};
+
+/// Payout confirmation reconciliation preflight (#784).
+pub mod payout_confirmation;
+pub use payout_confirmation::{
+    ExpectedPayout, PayoutConfirmation, PayoutConfirmationError, PayoutConfirmationStatus,
+    PayoutConfirmationValidation, PayoutReconciliation,
+};
+
+/// Configuration-ledger export consistency validation (#785).
+pub mod ledger_export;
+pub use ledger_export::{LedgerExportError, LedgerExportValidation, LedgerExportVerification};
+
+/// Beneficiary verification status checks (#786).
+pub mod beneficiary_verification;
+pub use beneficiary_verification::{
+    BeneficiaryStatusValidation, BeneficiaryVerification, BeneficiaryVerificationError,
+    BeneficiaryVerificationStatus,
+};
+
 #[contracttype]
 #[derive(Clone, Debug)]
 pub struct ContractAddresses {
