@@ -206,6 +206,29 @@ pub use stalled_run_recovery::{
     StalledRunRecoveryError, StalledRunRecoveryReason, STALLED_RUN_THRESHOLD_SECONDS,
 };
 
+/// Temporary approver delegation controls (#636).
+pub mod approver_delegation;
+pub use approver_delegation::{
+    delegate_approver, get_active_delegation, is_delegation_active, resolve_effective_approver,
+    revoke_delegation, ApproverDelegationRecord, DelegationError, DelegationKey,
+    MAX_DELEGATION_DURATION_SECONDS,
+};
+
+/// Payroll run amendment validation (#635).
+pub mod amendment_validation;
+pub use amendment_validation::{
+    can_amend_run, get_amendment_history, seal_run, validate_run_amendment, AmendmentError,
+    AmendmentKey, AmendmentRecord, AmendmentSealKey,
+};
+
+/// Recurring payroll schedule state machine (#351).
+pub mod recurring_schedule;
+pub use recurring_schedule::{
+    advance_schedule_by_time, create_schedule, get_schedule, get_schedule_state,
+    is_valid_transition, transition_schedule, ScheduleKey, SchedulePeriod, ScheduleState,
+    ScheduleTransitionError,
+};
+
 const MAX_BATCH: u32 = 50;
 const MAX_DRAFT_DESCRIPTION_BYTES: u32 = 256;
 

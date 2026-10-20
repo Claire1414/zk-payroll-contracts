@@ -64,3 +64,27 @@ deployment-keys/
 # PR description scratch files
 PR_DESCRIPTION_*.md
 pr.md
+
+# Implementation notes and scratch files
+IMPLEMENTATION_NOTES.md
+README_UPDATES.md
+
+# Additional test snapshot formats
+*.snap.new
+insta.yaml
+**/*.insta.yaml
+
+# Coverage reports
+coverage/
+lcov.info
+*.profraw
+*.profdata
+tarpaulin-report.html
+
+# Rust build artifacts (redundant with target/ but explicit)
+**/*.rlib
+**/*.rmeta
+
+# Temporary editor swap files
+.#*
+\#*#

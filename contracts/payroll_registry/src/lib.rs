@@ -5,6 +5,13 @@ extern crate alloc;
 use pause_manager::PauseManagerClient;
 use soroban_sdk::{contract, contractimpl, contracttype, Address, BytesN, Env, String, Symbol};
 
+/// Employee consent commitment lifecycle (#350).
+pub mod consent;
+pub use consent::{
+    get_consent, has_active_consent, record_consent, require_active_consent, revoke_consent,
+    ConsentCommitment, ConsentError, ConsentKey, ConsentState,
+};
+
 const STELLAR_ACCOUNT_STRKEY_LEN: u32 = 56;
 const STELLAR_ACCOUNT_STRKEY_LEN_USIZE: usize = 56;
 const STELLAR_ACCOUNT_VERSION_BYTE: u8 = 6 << 3;
